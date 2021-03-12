@@ -1,5 +1,6 @@
 package com.epsi.mycal;
 
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 /**
@@ -20,13 +21,15 @@ public class ConsoleUi {
    * UI process.
    */
   public void process() {
-    int value1, value2, result;
+    int value1;
+    int value2;
+    int result;
     boolean resultBool;
 
     Calculator calc = new Calculator();
 
     this.displayFunctionAvailable();
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in, Charset.defaultCharset());
 
     int value = input.nextInt();
 
