@@ -10,6 +10,7 @@ public class CalculatorTest {
 
     @Before
     public void setUp() throws Exception {
+
     }
 
     @After
@@ -36,6 +37,17 @@ public class CalculatorTest {
         int actual = calc.sub(a, b);
 
         assertEquals(2, actual);
+    }
+
+    @Test
+    public void testMul() {
+        int a = 4;
+        int b = 2;
+
+        Calculator calc = new Calculator();
+        int actual = calc.mul(a, b);
+
+        assertEquals(8, actual);
     }
 
 }
