@@ -8,46 +8,46 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-    @Before
-    public void setUp() throws Exception {
+  @Before
+  public void setUp() throws Exception {
 
-    }
+  }
 
-    @After
-    public void tearDown() throws Exception {
-    }
+  @After
+  public void tearDown() throws Exception {
+  }
 
-    @Test
-    public void testAdd() {
-        int a = 2;
-        int b = 3;
+  @Test
+  public void testAdd() {
+    int a = 2;
+    int b = 3;
 
-        Calculator calc = new Calculator();
-        int actual = calc.add(a, b);
+    Calculator calc = new Calculator();
+    int actual = calc.add(a, b);
 
-        assertEquals(5, actual);
-    }
+    assertEquals(5, actual);
+  }
 
-    @Test
-    public void testSub() {
-        int a = 4;
-        int b = 2;
+  @Test
+  public void testSub() {
+    int a = 4;
+    int b = 2;
 
-        Calculator calc = new Calculator();
-        int actual = calc.sub(a, b);
+    Calculator calc = new Calculator();
+    int actual = calc.sub(a, b);
 
-        assertEquals(2, actual);
-    }
+    assertEquals(2, actual);
+  }
 
-    @Test
-    public void testMul() {
-        int a = 4;
-        int b = 2;
+  @Test
+  public void testMul() {
+    int a = 4;
+    int b = 2;
 
-        Calculator calc = new Calculator();
-        int actual = calc.mul(a, b);
+    Calculator calc = new Calculator();
+    int actual = calc.mul(a, b);
 
-        assertEquals(8, actual);
-    }
+    assertEquals(8, actual);
+  }
 
 }
