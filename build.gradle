@@ -37,7 +37,7 @@ task checkstyleMain (type: Checkstyle, overwrite: true) {
     configFile = file("${rootProject.rootDir}/config/checkstyle/checkstyle.xml")
 }
 
-task checkstyleMain (type: Checkstyle, overwrite: true) {
+task checkstyleTest (type: Checkstyle, overwrite: true) {
     ignoreFailures = true
     showViolations = false
     source fileTree('src/test/java')
