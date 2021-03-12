@@ -50,4 +50,41 @@ public class CalculatorTest {
     assertEquals(8, actual);
   }
 
+  @Test
+  public void testDiv() {
+    int a = 4;
+    int b = 2;
+
+    Calculator calc = new Calculator();
+    int actual = calc.div(a, b);
+
+    assertEquals(2, actual);
+  }
+
+  @Test
+  public void testIsPair() {
+    int a = 4;
+    int b = 3;
+
+    Calculator calc = new Calculator();
+    boolean actual = calc.isPair(a);
+    assertTrue(actual);
+
+    actual = calc.isPair(b);
+    assertFalse(actual);
+  }
+
+  @Test
+  public void testIsPrime() {
+    int prime = 3;
+    int notPrime = 6;
+
+    Calculator calc = new Calculator();
+    boolean actual = calc.isPrime(prime);
+    assertTrue("is not prime", actual);
+
+    actual = calc.isPrime(notPrime);
+    assertFalse("is prime", actual);
+  }
+
 }
