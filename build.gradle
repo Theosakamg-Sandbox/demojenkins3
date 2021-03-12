@@ -5,7 +5,10 @@ plugins {
     id 'jacoco'
     id 'checkstyle'
     id "com.github.spotbugs" version "4.7.0"
+    id 'pmd'
 }
+
+// COMMON /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 repositories {
     mavenCentral()
@@ -15,6 +18,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+// JACOCO /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 jacocoTestReport {
     reports {
         xml.enabled true
@@ -23,10 +27,13 @@ jacocoTestReport {
     }
 }
 
-def classesJava = "${project.buildDir}/classes/java/main/"
+// CHeckStyle /////////////////////////////////////////////////////////////////////////////////////////////////////////
 checkstyle {
     toolVersion = "6.3"
+    checkstyleTest.enabled = false
 }
+
+def classesJava = "${project.buildDir}/classes/java/main/"
 task checkstyleMain (type: Checkstyle, overwrite: true) {
     ignoreFailures = true
     showViolations = false
@@ -37,22 +44,30 @@ task checkstyleMain (type: Checkstyle, overwrite: true) {
     configFile = file("${rootProject.rootDir}/config/checkstyle/checkstyle.xml")
 }
 
-task checkstyleTest (type: Checkstyle, overwrite: true) {
-    ignoreFailures = true
-    showViolations = false
-    source fileTree('src/test/java')
-    include '**/*.java'
-    exclude '**/gen/**'
-    classpath = fileTree(classesJava)
-    configFile = file("${rootProject.rootDir}/config/checkstyle/checkstyle.xml")
-}
-
+// SpotBug ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 spotbugs {
     ignoreFailures = true
+    spotbugsTest.enabled = false
 }
 
+// Junit //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 test {
     ignoreFailures = true
+}
 
+
+def javasRoot = "${rootProject.rootDir}/src/main/java"
+task pmdMain(type: Pmd, overwrite: true) {
+  ignoreFailures = true
+  description 'Runs PMD inspection against sourcesets.'
+  group = 'Code Quality'
+  ruleSetFiles = files("${rootProject.rootDir}/config/pmd/pmd_rules.xml")
+  source = fileTree(javasRoot)
+  include '**/*.java'
+  exclude '**/gen/**'
+  reports {
+    xml.enabled = true
+    html.enabled = false
+  }
 }
 
